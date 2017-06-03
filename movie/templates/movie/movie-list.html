@@ -1,0 +1,28 @@
+
+{% extends 'movie/base.html' %}
+{% block title %} results {% endblock %}
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+
+    <h2 class="text-warning">What are you looking for..?</h2>
+    {% if movies %}
+      {% for movie in movies %}
+        <a href="{ % url 'movie:movie_details' {{movie.movie_links}}% }" style="text-decoration: none;color:#E65100;
+        font-weight:bold;">
+          <div class="well well-lg">
+            <p class="text-center text-success" style="margin:0; padding:0; font-size: 1.3em">{{movie}}</p>
+          </div>
+        </a>
+      {% endfor %}
+    {% else %}
+    {% endif %}
+
+  </div>
+  <div class="col-sm-3"></div>
+</div>
+
+
+{% endblock %}

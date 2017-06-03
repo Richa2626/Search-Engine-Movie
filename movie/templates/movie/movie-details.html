@@ -1,0 +1,33 @@
+{% extends 'movie/base.html' %}
+{% block title %} {{movie.movie_name}} {% endblock %}
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+
+    <h3 class="text-success">Here you go..</h3>
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-sm-4">
+            <img src="{{movie.movie_image_url|default:'https://www.shearwater.com/wp-content/plugins/lightbox/images/No-image-found.jpg'}}"
+            alt="no movie poster" style="max-width:182px">
+        </div>
+        <div class="col-sm-8">
+          <h3>{{movie.movie_name}}</h3>
+          <small>{{movie.movie_director}}</small><br>
+          <small class="text-info"><i class="fa fa-star" aria-hidden="true"></i> {{movie.ratings|default:0}}/10 | {{movie.certificate}} | {{movie.duration}}</small><br>
+          <small>{{movie.genre}}</small><br>
+          <small>{{movie.release_date}}</small><br>
+          <small>{{movie.movie_credit_summary}}</small><br> <br>
+          {% if movie.movie_video_url %}
+            <small><a href="{{movie.movie_video_url}}" class="btn btn-info btn-xs btn-block">Watch trailer here</a></small>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+{% endblock %}
